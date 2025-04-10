@@ -1700,7 +1700,7 @@ News search: All Articles: entity mentioned at least once in the article"""
             response = requests.post(
                 url="https://openrouter.ai/api/v1/chat/completions",
                 headers={
-                    "Authorization": "Bearer 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",  # Ensure your API key is correct
+                    "Authorization": "Bearer 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",  # Ensure your API key is correct
                     "Content-Type": "application/json",
                 },
                 data=json.dumps({
@@ -1737,7 +1737,7 @@ News search: All Articles: entity mentioned at least once in the article"""
             response1 = requests.post(
                 url="https://openrouter.ai/api/v1/chat/completions",
                 headers={
-                    "Authorization": "Bearer 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",  # Ensure your API key is correct
+                    "Authorization": "Bearer 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",  # Ensure your API key is correct
                     "Content-Type": "application/json",
                 },
                 data=json.dumps({
