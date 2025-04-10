@@ -11,4 +11,4 @@ wordcloud
 fuzzywuzzy
 gensim
 spacy
-requests==2.25.1
+requests
