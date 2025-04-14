@@ -1011,6 +1011,9 @@ if date_selected:# File Upload Section
             pubs_table = pubs_table.sort_values('Total', ascending=False).round()
             pubs_table.loc['Total'] = pubs_table.sum(numeric_only=True, axis=0)
             pubs_table['Client %'] = ((pubs_table[client_columndt] / pubs_table['Total']) * 100).round().astype(int)
+            numeric_columns = pubs_table.select_dtypes(include=['number']).columns
+            pubs_table[numeric_columns] = pubs_table[numeric_columns].astype(int)
+            
             pubs_table1 = pubs_table.head(10)
             pubs_table2O=  pubs_table.head(20)
 
@@ -1493,7 +1496,9 @@ if date_selected:# File Upload Section
                 journalist_client3 = ""
                 publication_client3 = ""
                 jour_client3 = 0
-    
+                
+            pubs_table =pubs_table.rename(columns= {'Total': 'Total Unique Articles'})
+            pubs_table.at[pubs_table.index[-1], 'Publication Name'] = 'Total'
            
     
     
@@ -1628,7 +1633,7 @@ if date_selected:# File Upload Section
             
             st.sidebar.write("## Download Report and Entity Sheets in Single Excel workbook")
             file_name_all = st.sidebar.text_input("Enter file name for Combined Excel", "Combined Excel.xlsx")
-            if st.sidebar.button("Download Combined File"):
+            if st.sidebar.button("Download Combined Excel"):
                 dfs = [Entity_SOV3, sov_dt11, pubs_table2O, Unique_Articles2O, PType_Entity, Jour_Comp, Jour_Client]
                 comments =['SOV Table', 'Month-on-Month Table', 'Publication Table', 'Journalist Table','Pub Type and Entity Table','Journ-on Comp, not Client','Journ-on Client, not Comp']
                         
@@ -1640,6 +1645,7 @@ News search: All Articles: entity mentioned at least once in the article"""
                 w1 = multiple_dfs(dfs, 'Tables', excel_io_all, comments, entity_info)
                 excel_io_all.seek(0)
                 wb = load_workbook(excel_io_all)
+                pubs_table.at[pubs_table.index[-1], 'Publication Name'] = 'Total'
                 dfs1 = [pubs_table, Unique_Articles]
                 comments1 = ['Publication Table', 'Journalist Table']
                 multiple_dfs1(dfs1, 'All Pub-Jour', wb, comments1)  # <-- this writes directly into base workbook
@@ -2153,6 +2159,8 @@ News search: All Articles: entity mentioned at least once in the article"""
             if st.sidebar.button("Download PowerPoint"):
                 # List of DataFrames to save
                 pubs_table1 = pubs_table.head(10)
+                numeric_columns = pubs_table1.select_dtypes(include=['number']).columns
+                pubs_table1[numeric_columns] = pubs_table1[numeric_columns].astype(int)
                 Jour_table1 = Jour_table.head(10)
                 dfs = [Entity_SOV3, sov_dt11, pubs_table1,Unique_Articles1O, PType_Entity, Jour_Comp, Jour_Client]
                 table_titles = [f'SOV Table of {client_name} and competition', f'Month-on-Month Table of {client_name} and competition', f'Publication Table on {client_name} and competition', f'Journalist writing on {client_name} and competition',
