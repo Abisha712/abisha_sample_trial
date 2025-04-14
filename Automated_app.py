@@ -1092,6 +1092,20 @@ if date_selected:# File Upload Section
             top10_pub_sum = pubs_table_trimmed[client_column].sort_values(ascending=False).head(10).sum()
             client_sov_count = int(Entity_SOV3.loc[Entity_SOV3["Entity"] == client_column, "News Count"].values[0])
             top10_pub_perc = int(round(( top10_pub_sum / client_sov_count) * 100))
+
+            client_sov = Unique_Articles.loc[Unique_Articles['Journalist'] == 'Total',client_column].values[0]
+            bureau_articles = Unique_Articles.loc[Unique_Articles['Journalist'] == 'Bureau News',client_column].values[0]
+            individual_articles = client_sov-bureau_articles
+            bureau_percentage = int(round((bureau_articles / client_sov) * 100,0))
+            individual_percentage = int(round((individual_articles / client_sov) * 100,0))
+            filtered_df = Unique_Articles[~Unique_Articles['Journalist'].isin(['Total', 'Bureau News'])]
+            total_journalists = len(filtered_df)
+            total_articles = filtered_df[filtered_df['Total'].notna() & (filtered_df['Total'] > 0)]['Total'].sum()
+            non_zero_journalists = filtered_df[filtered_df[client_column] > 0].shape[0]
+            articles_for_client = filtered_df[filtered_df[client_column] > 0][client_column].sum()
+            client_journalist_percentage =  int(round((non_zero_journalists/ total_journalists) * 100,0))
+            engage_with = total_journalists-non_zero_journalists
+        
     
             # Save them in separate DataFrames
             df_topc1 = topc_1.reset_index(drop=True)
@@ -1355,19 +1369,7 @@ if date_selected:# File Upload Section
                 journalist_name3 = ""
                 publication_name3 = ""
                 client_count3 = 0
-            client_sov = Unique_Articles.loc[Unique_Articles['Journalist'] == 'Total',client_columns].values[0]
-            bureau_articles = Unique_Articles.loc[Unique_Articles['Journalist'] == 'Bureau News',client_columns].values[0]
-            individual_articles = client_sov-bureau_articles
-            bureau_percentage = int(round((bureau_articles / client_sov) * 100,0))
-            individual_percentage = int(round((individual_articles / client_sov) * 100,0))
-            total_journalists = len(filtered_df)
-            total_articles = filtered_df[filtered_df['Total Unique Articles'].notna() & (filtered_df['Total Unique Articles'] > 0)]['Total Unique Articles'].sum()
-            non_zero_journalists = filtered_df[filtered_df[client_column] > 0].shape[0]
-            articles_for_client = filtered_df[filtered_df[client_column] > 0][client_column].sum()
-            client_journalist_percentage =  int(round((non_zero_journalists/ total_journalists) * 100,0))
-            engage_with = total_journalists-non_zero_journalists
-            excluded_df = PType_Entity.sort_values(by=client_columns, ascending=False).iloc[3:]
-            publication_types = excluded_df['Publication Type'].unique()
+          
     
             # Find columns containing the word 'Client'
             client_columns = [col for col in Unique_Articles.columns if 'Client' in col]
