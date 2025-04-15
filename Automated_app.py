@@ -1016,6 +1016,8 @@ if date_selected:# File Upload Section
             
             pubs_table1 = pubs_table.head(10)
             pubs_table2O=  pubs_table.head(20)
+            pubs_table2O =pubs_table2O.rename(columns= {'Total': 'Total Unique Articles'})
+
 
 
 
