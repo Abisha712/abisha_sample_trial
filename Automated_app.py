@@ -1953,7 +1953,7 @@ News search: All Articles: entity mentioned at least once in the article"""
         
             news_search_text = (f"• The leading publication types writing on {client_name} and its competitors are {topt_1_name}, contributing {topt_1_count} articles, followed by {topt_2_name} with {topt_2_count} articles, and {topt_3_name} with {topt_3_count} articles.\n"
                 f"• Top Publication Types writing on {client_name} are {topp_1_name} and  {topp_2_name} they both contribute {topp_1_count} articles & {topp_2_count} articles respectively of the total news coverage on {client_name}.\n"
-                f"• {client_name} may find value in engaging more with {publication_types_str} to expand her reach and visibility among broader audiences to expand her reach and visibility among broader audiences.\n"
+                f"• {client_name} may find value in engaging more with {publication_types_str} to expand their reach and visibility among broader audiences to expand their reach and visibility among broader audiences.\n"
                            )
             news_search_shape = slide.shapes.add_textbox(Inches(0.3), Inches(6.0), Inches(14), Inches(0.5))
             news_search_frame = news_search_shape.text_frame
@@ -1962,7 +1962,7 @@ News search: All Articles: entity mentioned at least once in the article"""
             p = news_search_frame.add_paragraph()
             p.text = (f"• The leading publication types writing on {client_name} and its competitors are {topt_1_name}, contributing {topt_1_count} articles, followed by {topt_2_name} with {topt_2_count} articles, and {topt_3_name} with {topt_3_count} articles.\n"
                 f"• Top Publication Types writing on {client_name} are {topp_1_name} and  {topp_2_name} they both contribute {topp_1_count} articles & {topp_2_count} articles respectively of the total news coverage on {client_name}.\n"
-        f"• {client_name} may find value in engaging more with {publication_types_str} to expand her reach and visibility among broader audiences to expand her reach and visibility among broader audiences.\n"
+        f"• {client_name} may find value in engaging more with {publication_types_str} to expand their reach and visibility among broader audiences to expand their reach and visibility among broader audiences.\n"
                            )
             p.font.size = Pt(18)
             p.font.name = 'Gill Sans'
@@ -2195,7 +2195,7 @@ News search: All Articles: entity mentioned at least once in the article"""
             ,
                            f"• The leading publication types writing on {client_name} and its competitors are {topt_1_name}, contributing {topt_1_count} articles, followed by {topt_2_name} with {topt_2_count} articles, and {topt_3_name} with {topt_3_count} articles.\n"
                                 f"• Top Publication Types writing on {client_name} are {topp_1_name} and  {topp_2_name} they both contribute {topp_1_count} articles & {topp_2_count} articles respectively of the total news coverage on {client_name}.\n"
-            f"• {client_name} may find value in engaging more with {publication_types_str} to expand her reach and visibility among broader audiences to expand her reach and visibility among broader audiences.\n",
+            f"• {client_name} may find value in engaging more with {publication_types_str} to expand their reach and visibility among broader audiences to expand their reach and visibility among broader audiences.\n",
         
                                 f"• The top journalists writing on competitors and not on {client_name}  are {topjc_1_name} from {topjp_1_name} with {topjc_1_count} unique articles, followed by {topjc_2_name} from {topjp_2_name} with {topjc_2_count} unique articles, and {topjc_3_name} from {topjp_3_name} with {topjc_3_count} unique articles.\n"
         f"• These journalists have not written any articles on {client_name} so there is an opportunity for {client_name} to engage with these journalists to broaden its coverage and influence within the industry.\n",
