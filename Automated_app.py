@@ -3,6 +3,7 @@ import pandas as pd
 from datetime import date
 import time
 import base64
+import inflect
 from openpyxl.utils import get_column_letter
 from openpyxl.styles import Alignment
 from openpyxl import load_workbook
@@ -1020,7 +1021,6 @@ if date_selected:# File Upload Section
 
 
 
-
             # Extract the top 3 publications and their counts
             top_1 = pubs_table1.iloc[0:1]  # First publication
             top_2 = pubs_table1.iloc[1:2]  # Second publication
@@ -1138,8 +1138,11 @@ if date_selected:# File Upload Section
             PType_Entity = pd.DataFrame(PType_Entity.to_records())
             ordered_cols = ['Publication Type', client_columndt] + [ent for ent in sov_order_no_client if ent in PType_Entity.columns] + (['Total'] if 'Total' in PType_Entity.columns else [])
             PType_Entity = PType_Entity[ordered_cols]
-            excluded_df = PType_Entity.sort_values(by=client_columndt, ascending=False).iloc[2:]
-            publication_types = excluded_df['Publication Type'].unique()
+            excluded_df = PType_Entity.sort_values(by=client_columndt, ascending=False)
+            p = inflect.engine()
+            publication_types = excluded_df['Publication Type'].unique()[3:].tolist()
+            publication_types_str = p.join(publication_types)
+
            
             # Extract the top 3 publications and their counts
             topt_1 = PType_Entity.iloc[0:1]  # First publication
@@ -1950,7 +1953,7 @@ News search: All Articles: entity mentioned at least once in the article"""
         
             news_search_text = (f"• The leading publication types writing on {client_name} and its competitors are {topt_1_name}, contributing {topt_1_count} articles, followed by {topt_2_name} with {topt_2_count} articles, and {topt_3_name} with {topt_3_count} articles.\n"
                 f"• Top Publication Types writing on {client_name} are {topp_1_name} and  {topp_2_name} they both contribute {topp_1_count} articles & {topp_2_count} articles respectively of the total news coverage on {client_name}.\n"
-                f"• {client_name} may find value in engaging more with {', '.join(publication_types[:-1])} and {publication_types[-1]} to expand her reach and visibility among broader audiences.\n"
+                f"• {client_name} may find value in engaging more with {publication_types_str} to expand her reach and visibility among broader audiences to expand her reach and visibility among broader audiences.\n"
                            )
             news_search_shape = slide.shapes.add_textbox(Inches(0.3), Inches(6.0), Inches(14), Inches(0.5))
             news_search_frame = news_search_shape.text_frame
@@ -1959,7 +1962,7 @@ News search: All Articles: entity mentioned at least once in the article"""
             p = news_search_frame.add_paragraph()
             p.text = (f"• The leading publication types writing on {client_name} and its competitors are {topt_1_name}, contributing {topt_1_count} articles, followed by {topt_2_name} with {topt_2_count} articles, and {topt_3_name} with {topt_3_count} articles.\n"
                 f"• Top Publication Types writing on {client_name} are {topp_1_name} and  {topp_2_name} they both contribute {topp_1_count} articles & {topp_2_count} articles respectively of the total news coverage on {client_name}.\n"
-        f"• {client_name} may find value in engaging more with {', '.join(publication_types[:-1])} and {publication_types[-1]} to expand her reach and visibility among broader audiences.\n"
+        f"• {client_name} may find value in engaging more with {publication_types_str} to expand her reach and visibility among broader audiences to expand her reach and visibility among broader audiences.\n"
                            )
             p.font.size = Pt(18)
             p.font.name = 'Gill Sans'
@@ -2008,7 +2011,7 @@ News search: All Articles: entity mentioned at least once in the article"""
         
             # Add News Search text
             news_search_text = (f"• The top journalists reporting on {client_name} and its competitors are {topj_1_name} from {topjt_1_name} with {topj_1_count} unique articles, followed by {topj_2_name} from {topjt_2_name} with {topj_2_count} unique articles, and {topj_3_name} from {topjt_3_name} with {topj_3_count} unique articles.\n"
-                           f"• Among the journalists specifically covering {client_name} are {journalist_name1} from {publication_name1} with {client_count1} unique articles, {journalist_name2} from {publication_name2} has authored{client_count2} unique articles and {journalist_name3} from {publication_name3} written {client_count3} unique article.\n"
+                           f"• Among the journalists specifically covering {client_name} are {journalist_name1} from {publication_name1} with {client_count1} unique articles, {journalist_name2} from {publication_name2} has authored {client_count2} unique articles and {journalist_name3} from {publication_name3} written {client_count3} unique article.\n"
                             f"• {client_name} has received a total of {client_sov} articles in news coverage. Among these, {bureau_articles} i.e {bureau_percentage}% of the articles were filed by Bureaus, while the remaining {individual_articles} i.e {individual_percentage}% were written by individual journalists.\n"
                             f"• A total of {total_journalists} journalists have written {total_articles} unique articles covering {client_name} and its competitors, out of which, {non_zero_journalists} journalists have specifically written {articles_for_client} unique articles mentioning {client_name} i.e of the total journalists writing on {client_name} and its competitors only {client_journalist_percentage}% them have mentioned {client_name} in their articles.\n"
                            f"• A total of {engage_with} journalists have not mentioned {client_name} in their articles. Inorder to increase it's visibility {client_column} needs to engage with these {engage_with} journalists.\n"
@@ -2019,7 +2022,7 @@ News search: All Articles: entity mentioned at least once in the article"""
             news_search_frame.clear()  # Clear any default paragraph
             p = news_search_frame.add_paragraph()
             p.text = (f"• The top journalists reporting on {client_name} and its competitors are {topj_1_name} from {topjt_1_name} with {topj_1_count} unique articles, followed by {topj_2_name} from {topjt_2_name} with {topj_2_count} unique articles, and {topj_3_name} from {topjt_3_name} with {topj_3_count} unique articles.\n"
-                           f"• Among the journalists specifically covering {client_name} are {journalist_name1} from {publication_name1} with {client_count1} unique articles, {journalist_name2} from {publication_name2} has authored{client_count2} unique articles and {journalist_name3} from {publication_name3} written {client_count3} unique article.\n"
+                           f"• Among the journalists specifically covering {client_name} are {journalist_name1} from {publication_name1} with {client_count1} unique articles, {journalist_name2} from {publication_name2} has authored {client_count2} unique articles and {journalist_name3} from {publication_name3} written {client_count3} unique article.\n"
                             f"• {client_name} has received a total of {client_sov} articles in news coverage. Among these, {bureau_articles} i.e {bureau_percentage}% of the articles were filed by Bureaus, while the remaining {individual_articles} i.e {individual_percentage}% were written by individual journalists.\n"
                             f"• A total of {total_journalists} journalists have written {total_articles} unique articles covering {client_name} and its competitors, out of which, {non_zero_journalists} journalists have specifically written {articles_for_client} unique articles mentioning {client_name} i.e of the total journalists writing on {client_name} and its competitors only {client_journalist_percentage}% them have mentioned {client_name} in their articles.\n"
                            f"• A total of {engage_with} journalists have not mentioned {client_name} in their articles. Inorder to increase it's visibility {client_column} needs to engage with these {engage_with} journalists.\n"
@@ -2192,7 +2195,7 @@ News search: All Articles: entity mentioned at least once in the article"""
             ,
                            f"• The leading publication types writing on {client_name} and its competitors are {topt_1_name}, contributing {topt_1_count} articles, followed by {topt_2_name} with {topt_2_count} articles, and {topt_3_name} with {topt_3_count} articles.\n"
                                 f"• Top Publication Types writing on {client_name} are {topp_1_name} and  {topp_2_name} they both contribute {topp_1_count} articles & {topp_2_count} articles respectively of the total news coverage on {client_name}.\n"
-            f"• {client_name} may find value in engaging more with {', '.join(publication_types[:-1])} and {publication_types[-1]} to expand her reach and visibility among broader audiences.\n",
+            f"• {client_name} may find value in engaging more with {publication_types_str} to expand her reach and visibility among broader audiences to expand her reach and visibility among broader audiences.\n",
         
                                 f"• The top journalists writing on competitors and not on {client_name}  are {topjc_1_name} from {topjp_1_name} with {topjc_1_count} unique articles, followed by {topjc_2_name} from {topjp_2_name} with {topjc_2_count} unique articles, and {topjc_3_name} from {topjp_3_name} with {topjc_3_count} unique articles.\n"
         f"• These journalists have not written any articles on {client_name} so there is an opportunity for {client_name} to engage with these journalists to broaden its coverage and influence within the industry.\n",
