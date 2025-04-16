@@ -12,3 +12,4 @@ fuzzywuzzy
 gensim
 spacy
 requests
+inflect
