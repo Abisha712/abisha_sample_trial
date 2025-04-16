@@ -2011,9 +2011,9 @@ News search: All Articles: entity mentioned at least once in the article"""
         
             # Add News Search text
             news_search_text = (f"• The top journalists reporting on {client_name} and its competitors are {topj_1_name} from {topjt_1_name} with {topj_1_count} unique articles, followed by {topj_2_name} from {topjt_2_name} with {topj_2_count} unique articles, and {topj_3_name} from {topjt_3_name} with {topj_3_count} unique articles.\n"
-                           f"• Among the journalists specifically covering {client_name} are {journalist_name1} from {publication_name1} with {client_count1} unique articles, {journalist_name2} from {publication_name2} has authored {client_count2} unique articles and {journalist_name3} from {publication_name3} written {client_count3} unique article.\n"
+                           f"• Among the journalists specifically covering {client_name} are {journalist_name1} from {publication_name1} with {client_count1} articles, {journalist_name2} from {publication_name2} has authored {client_count2} articles and {journalist_name3} from {publication_name3} written {client_count3} articles.\n"
                             f"• {client_name} has received a total of {client_sov} articles in news coverage. Among these, {bureau_articles} i.e {bureau_percentage}% of the articles were filed by Bureaus, while the remaining {individual_articles} i.e {individual_percentage}% were written by individual journalists.\n"
-                            f"• A total of {total_journalists} journalists have written {total_articles} unique articles covering {client_name} and its competitors, out of which, {non_zero_journalists} journalists have specifically written {articles_for_client} unique articles mentioning {client_name} i.e of the total journalists writing on {client_name} and its competitors only {client_journalist_percentage}% them have mentioned {client_name} in their articles.\n"
+                            f"• A total of {total_journalists} journalists have written {total_articles} unique articles covering {client_name} and its competitors, out of which, {non_zero_journalists} journalists have specifically written {articles_for_client} articles mentioning {client_name} i.e of the total journalists writing on {client_name} and its competitors only {client_journalist_percentage}% them have mentioned {client_name} in their articles.\n"
                            f"• A total of {engage_with} journalists have not mentioned {client_name} in their articles. Inorder to increase it's visibility {client_column} needs to engage with these {engage_with} journalists.\n"
                            )
             news_search_shape = slide.shapes.add_textbox(Inches(0.3), Inches(1.0), Inches(14), Inches(0.5))
@@ -2022,9 +2022,9 @@ News search: All Articles: entity mentioned at least once in the article"""
             news_search_frame.clear()  # Clear any default paragraph
             p = news_search_frame.add_paragraph()
             p.text = (f"• The top journalists reporting on {client_name} and its competitors are {topj_1_name} from {topjt_1_name} with {topj_1_count} unique articles, followed by {topj_2_name} from {topjt_2_name} with {topj_2_count} unique articles, and {topj_3_name} from {topjt_3_name} with {topj_3_count} unique articles.\n"
-                           f"• Among the journalists specifically covering {client_name} are {journalist_name1} from {publication_name1} with {client_count1} unique articles, {journalist_name2} from {publication_name2} has authored {client_count2} unique articles and {journalist_name3} from {publication_name3} written {client_count3} unique article.\n"
+                           f"• Among the journalists specifically covering {client_name} are {journalist_name1} from {publication_name1} with {client_count1} articles, {journalist_name2} from {publication_name2} has authored {client_count2} articles and {journalist_name3} from {publication_name3} written {client_count3} article.\n"
                             f"• {client_name} has received a total of {client_sov} articles in news coverage. Among these, {bureau_articles} i.e {bureau_percentage}% of the articles were filed by Bureaus, while the remaining {individual_articles} i.e {individual_percentage}% were written by individual journalists.\n"
-                            f"• A total of {total_journalists} journalists have written {total_articles} unique articles covering {client_name} and its competitors, out of which, {non_zero_journalists} journalists have specifically written {articles_for_client} unique articles mentioning {client_name} i.e of the total journalists writing on {client_name} and its competitors only {client_journalist_percentage}% them have mentioned {client_name} in their articles.\n"
+                            f"• A total of {total_journalists} journalists have written {total_articles} unique articles covering {client_name} and its competitors, out of which, {non_zero_journalists} journalists have specifically written {articles_for_client} articles mentioning {client_name} i.e of the total journalists writing on {client_name} and its competitors only {client_journalist_percentage}% them have mentioned {client_name} in their articles.\n"
                            f"• A total of {engage_with} journalists have not mentioned {client_name} in their articles. Inorder to increase it's visibility {client_column} needs to engage with these {engage_with} journalists.\n"
                            )
             p.font.size = Pt(18)
@@ -2046,7 +2046,7 @@ News search: All Articles: entity mentioned at least once in the article"""
         
             source_text = (
             f"• The leading publications reporting on {client_name} and its competitors are {top_1_name}, contributing {top_1_count} unique articles, followed by {top_2_name} with {top_2_count} unique articles, and {top_3_name} with {top_3_count} unique articles.\n"
-        f"• Among these ,publications covering news on {client_name} specifically are {topc_1_name} takes the lead with {topc_1_count} unique articles, followed by {topc_2_name} with {topc_2_count} unique articles, and {topc_3_name} with {topc_3_count} unique articles.\n"
+        f"• Among these ,publications covering news on {client_name} specifically are {topc_1_name} takes the lead with {topc_1_count} articles, followed by {topc_2_name} with {topc_2_count} articles, and {topc_3_name} with {topc_3_count} articles.\n"
        
         )
             source_shape = slide.shapes.add_textbox(Inches(0.3), Inches(6.1), Inches(14), Inches(1))
@@ -2056,7 +2056,7 @@ News search: All Articles: entity mentioned at least once in the article"""
             p = source_frame.add_paragraph()
             p.text = (
             f"• The leading publications reporting on {client_name} and its competitors are {top_1_name}, contributing {top_1_count} unique articles, followed by {top_2_name} with {top_2_count} unique articles, and {top_3_name} with {top_3_count} unique articles.\n"
-        f"• Among these ,publications covering news on {client_name} specifically are {topc_1_name} takes the lead with {topc_1_count} unique articles, followed by {topc_2_name} with {topc_2_count} unique articles, and {topc_3_name} with {topc_3_count} unique articles.\n"
+        f"• Among these ,publications covering news on {client_name} specifically are {topc_1_name} takes the lead with {topc_1_count} articles, followed by {topc_2_name} with {topc_2_count} articles, and {topc_3_name} with {topc_3_count} articles.\n"
       
         )
             p.font.size = Pt(18)
@@ -2187,10 +2187,10 @@ News search: All Articles: entity mentioned at least once in the article"""
             "4.SKUAST-K, IIT Ropar hold 2-day event"
             , 
             f"• The leading publications reporting on {client_name} and its competitors are {top_1_name}, contributing {top_1_count} unique articles, followed by {top_2_name} with {top_2_count} unique articles, and {top_3_name} with {top_3_count} unique articles.\n"
-            f"• Among these ,publications covering news on {client_name} specifically are {topc_1_name} takes the lead with {topc_1_count} unique articles, followed by {topc_2_name} with {topc_2_count} unique articles, and {topc_3_name} with {topc_3_count} unique articles.\n"
+            f"• Among these ,publications covering news on {client_name} specifically are {topc_1_name} takes the lead with {topc_1_count} articles, followed by {topc_2_name} with {topc_2_count} articles, and {topc_3_name} with {topc_3_count} articles.\n"
            f"• The top 10 publications writing articles on {client_name} contribute {top10_pub_perc}% (which is {top10_pub_sum} of the total {client_sov_count}  articles).\n" ,
             f"• The top journalists reporting on {client_name} and its competitors are {topj_1_name} from {topjt_1_name} with {topj_1_count} unique articles, followed by {topj_2_name} from {topjt_2_name} with {topj_2_count} unique articles, and {topj_3_name} from {topjt_3_name} with {topj_3_count} unique articles.\n"
-            f"• Among the journalists specifically covering {client_name} are {journalist_name1} from {publication_name1} with {client_count1} unique articles , {journalist_name2} from {publication_name2} has authored {client_count2} unique articles and {journalist_name3} from {publication_name3} written {client_count3} unique article.\n"
+            f"• Among the journalists specifically covering {client_name} are {journalist_name1} from {publication_name1} with {client_count1} articles , {journalist_name2} from {publication_name2} has authored {client_count2} articles and {journalist_name3} from {publication_name3} written {client_count3} article.\n"
            f"• {client_name} has received a total of {client_sov} articles in news coverage. Among these, {bureau_articles} i.e {bureau_percentage}% of the articles were filed by Bureaus, while the remaining {individual_articles} i.e {individual_percentage}% were written by individual journalists.\n"
             ,
                            f"• The leading publication types writing on {client_name} and its competitors are {topt_1_name}, contributing {topt_1_count} articles, followed by {topt_2_name} with {topt_2_count} articles, and {topt_3_name} with {topt_3_count} articles.\n"
@@ -2200,7 +2200,7 @@ News search: All Articles: entity mentioned at least once in the article"""
                                 f"• The top journalists writing on competitors and not on {client_name}  are {topjc_1_name} from {topjp_1_name} with {topjc_1_count} unique articles, followed by {topjc_2_name} from {topjp_2_name} with {topjc_2_count} unique articles, and {topjc_3_name} from {topjp_3_name} with {topjc_3_count} unique articles.\n"
         f"• These journalists have not written any articles on {client_name} so there is an opportunity for {client_name} to engage with these journalists to broaden its coverage and influence within the industry.\n",
         
-        f"• The journalists reporting on {client_name} and not on its competitors are {journalist_client1} from {publication_client1} with {jour_client1} unique article followed by {journalist_client2} from {publication_client2} with {jour_client2} unique articles.\n",
+        f"• The journalists reporting on {client_name} and not on its competitors are {journalist_client1} from {publication_client1} with {jour_client1} article followed by {journalist_client2} from {publication_client2} with {jour_client2} articles.\n",
         
                               ]
               
